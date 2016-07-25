@@ -1,0 +1,33 @@
+machine:
+  pre:
+    - sudo curl -L -o /usr/bin/docker 'https://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.0-circleci'
+    - sudo chmod 0755 /usr/bin/docker
+    - sudo curl -L -o /usr/bin/jq 'https://github.com/stedolan/jq/releases/download/jq-1.5rc1/jq-linux-x86_64-static'
+    - sudo chmod +x /usr/bin/jq
+  python:
+    version: 2.7.3
+  timezone:
+    Asia/Tokyo
+  services:
+    - docker
+
+dependencies:
+  cache_directories:
+    - "~/docker"
+
+  pre:
+    - docker info
+    - ./build.sh 0.7.0-0 0.7.0-0
+    - docker run -p 9042:9042 -d --name cassandra cassandra:2.2.5
+    - docker run -d --name orange-kong --link cassandra:cassandra -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp orangesys/alpine-s6-kong:0.7.0-0
+
+test:
+  override:
+    - ./chechkong.sh
+
+deployment:
+  hub:
+    branch: master
+    commands:
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push orangesys/alpine-s6-kong
