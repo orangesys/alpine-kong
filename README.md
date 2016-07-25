@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/gavinzhou/alpine-kong.svg?style=svg)](https://circleci.com/gh/gavinzhou/alpine-kong)
 # Kong in Docker 
 
 This is the official Docker image for [Kong][kong-site-url].
