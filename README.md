@@ -4,8 +4,8 @@ This is the official Docker image for [Kong][kong-site-url].
 
 # Supported tags and respective `Dockerfile` links
 
-- `0.8.3` - *([Dockerfile](https://github.com/Mashape/docker-kong/blob/0.8.3/Dockerfile))*
-- `latest` - *([Dockerfile](https://github.com/Mashape/docker-kong/blob/0.8.3/Dockerfile))*
+- `0.8.3` - *([Dockerfile](https://github.com/gavinzhou/alpine-kong/blob/master/Dockerfile))*
+- `latest` - *([Dockerfile](https://github.com/gavinzhou/alpine-kong/blob/master/Dockerfile))*
 
 # What is Kong?
 
