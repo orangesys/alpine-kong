@@ -13,10 +13,8 @@ RUN echo "==> Installing dependencies..." \
     make gcc musl-dev \
     pcre-dev openssl-dev zlib-dev ncurses-dev readline-dev \
     curl perl e2fsprogs-dev wget git bash \
- && mkdir -p /root/ngx_openresty \
- && cd /root/ngx_openresty \
  && echo "==> Downloading OpenResty..." \
- && curl -sSL http://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz | tar -xvz \
+ && curl -sSL http://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz | tar -xz \
  && cd openresty-* \
  && echo "==> Configuring OpenResty..." \
  && readonly NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
@@ -41,7 +39,7 @@ RUN echo "==> Installing dependencies..." \
  && echo "==> Configuring LuaRocks..." \
  && mkdir -p /root/luarocks \
  && cd /root/luarocks \
- && curl -sSL http://keplerproject.github.io/luarocks/releases/luarocks-${LUAROCKS_VERSION}.tar.gz |tar -xvz \
+ && curl -sSL http://keplerproject.github.io/luarocks/releases/luarocks-${LUAROCKS_VERSION}.tar.gz |tar -xz \
  && cd luarocks* \
  && ./configure \
     --with-lua=$OPENRESTY_PREFIX/luajit \

@@ -11,4 +11,4 @@ if [ -z "${_kong_version}" ]; then
 fi
 
 docker build --build-arg KONG_VERSION=${_kong_version} --tag "orangesys/alpine-kong:${_kong_tag}" --no-cache=true .
-docker tag orangesys/alpine-kong orangesys/alpine-kong:${_kong_tag}
+docker tag orangesys/alpine-kong:${_kong_tag} orangesys/alpine-kong
