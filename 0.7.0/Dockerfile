@@ -1,9 +1,9 @@
 FROM alpine:3.4
 MAINTAINER gavin zhou <gavin.zhou@gmail.com>
 
-ARG KONG_VERSION
 ENV OPENRESTY_VERSION=1.9.7.5 \
  LUAROCKS_VERSION=2.3.0 \
+ KONG_VERSION=0.7.0 \
  OPENRESTY_PREFIX=/usr/local/openresty \
  LUAROCKS_INSTALL="luarocks install"
 
@@ -13,6 +13,9 @@ RUN echo "==> Installing dependencies..." \
     make gcc musl-dev \
     pcre-dev openssl-dev zlib-dev ncurses-dev readline-dev \
     curl perl e2fsprogs-dev wget git bash \
+ && echo "==> Install dumb-init" \
+ && curl -sSL https://github.com/Yelp/dumb-init/archive/master.tar.gz | tar -xz \
+ && cd dumb-init-master && gcc -std=gnu99 -s -Wall -Werror -O3 -o /sbin/dumb-init /dumb-init-master/dumb-init.c \
  && echo "==> Downloading OpenResty..." \
  && curl -sSL http://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz | tar -xz \
  && cd openresty-* \
@@ -64,13 +67,14 @@ RUN echo "==> Installing dependencies..." \
  && unzip serf*.zip && mv serf /usr/bin/ && rm serf*.zip \
  && ln -sf /usr/local/openresty/luajit/bin/luajit /usr/local/bin/luajit \
  && cd /root && git clone https://github.com/Mashape/kong.git \
- && cd /root/kong && luarocks install kong-*.rockspec \
+ && cd /root/kong && git checkout ${KONG_VERSION} \
+ && luarocks install kong-*.rockspec \
  && apk del .build-deps \
  && apk add \
     libpcrecpp libpcre16 libpcre32 openssl libssl1.0 pcre libgcc libstdc++ e2fsprogs-dev dnsmasq bash \
  && echo "user=root" >> /etc/dnsmasq.conf \
  && rm -rf /var/cache/apk/* \
- && rm -rf /root/ngx_openresty /root/luarocks 
+ && rm -rf /root/ngx_openresty /root/luarocks /dumb-init-master
 
 COPY config.docker/kong.yml /etc/kong/
 

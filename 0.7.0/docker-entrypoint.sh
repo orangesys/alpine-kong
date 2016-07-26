@@ -6,4 +6,4 @@ if [ -n "$DATABASE" ]; then
   echo -e '\ndatabase: "'$DATABASE'"' >> /etc/kong/kong.yml
 fi
 
-exec "$@"
+exec "/sbin/dumb-init" "$@"
