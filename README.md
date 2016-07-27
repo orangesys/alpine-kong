@@ -85,7 +85,7 @@ $ docker run -d --name kong \
     -p 7946:7946 \
     -p 7946:7946/udp \
     --security-opt seccomp:unconfined \
-    mashape/kong
+    orangesys/alpine-kong:0.7.0
 ```
 
 **Note:** If Docker complains that `--security-opt` is an invalid option, just remove it and re-execute the command (it was introduced in Docker 1.3).
