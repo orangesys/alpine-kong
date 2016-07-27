@@ -1,5 +1,5 @@
 [![CircleCI](https://circleci.com/gh/gavinzhou/alpine-kong.svg?style=svg)](https://circleci.com/gh/gavinzhou/alpine-kong)
-# Kong in Docker 
+# Kong in Docker
 
 This is the official Docker image for [Kong][kong-site-url].
 orangesys/alpine-kong with [dumb-init](https://github.com/Yelp/dumb-init) installed and used as default ENTRYPOINT.
@@ -108,7 +108,7 @@ $ docker run -d \
     -p 7946:7946/udp \
     --security-opt seccomp:unconfined \
     --name kong \
-    mashape/kong
+    orangesys/alpine-kong:0.7.0
 ```
 
 When attached this way you can edit your configuration file from your host machine and restart your container. You can also make the container point to a different Cassandra/PostgreSQL instance, so no need to link it to a Cassandra/PostgreSQL container.
