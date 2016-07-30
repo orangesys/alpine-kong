@@ -2,8 +2,6 @@ machine:
   pre:
     - sudo curl -L -o /usr/bin/docker 'https://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.0-circleci'
     - sudo chmod 0755 /usr/bin/docker
-    - sudo curl -L -o /usr/bin/jq 'https://github.com/stedolan/jq/releases/download/jq-1.5rc1/jq-linux-x86_64-static'
-    - sudo chmod +x /usr/bin/jq
   python:
     version: 2.7.3
   timezone:
@@ -17,12 +15,10 @@ dependencies:
 
   pre:
     - docker info
-    - ./build.sh
-    - docker run -p 9042:9042 -d --name kong-database cassandra:2.2
 
 test:
   override:
-    - ./chechkong.sh
+    - ./build.sh
 
 deployment:
   hub:
