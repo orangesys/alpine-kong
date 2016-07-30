@@ -1,4 +1,9 @@
 machine:
+  environment:
+    PROJECT_NAME: orangesys
+    CLOUDSDK_COMPUTE_ZONE: asia-east1-c
+    CLUSTER_NAME: orangesysio
+    DEBIAN_FRONTEND: noninteractive
   pre:
     - sudo curl -L -o /usr/bin/docker 'https://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.0-circleci'
     - sudo chmod 0755 /usr/bin/docker
@@ -19,6 +24,11 @@ dependencies:
 test:
   override:
     - ./build.sh
+    - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
+    - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update kubectl
+    - echo $GCLOUD_SERVICE_KEY | base64 --decode -i > ${HOME}/account-auth.json
+    - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/account-auth.json
+    - sudo /opt/google-cloud-sdk/bin/gcloud config set project $PROJECT_NAME
 
 deployment:
   hub:
@@ -26,3 +36,4 @@ deployment:
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push orangesys/alpine-kong
+      - ./deploy.sh
