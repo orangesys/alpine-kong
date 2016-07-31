@@ -1,4 +1,5 @@
 [![CircleCI](https://circleci.com/gh/gavinzhou/alpine-kong.svg?style=svg)](https://circleci.com/gh/gavinzhou/alpine-kong)
+[![](https://imagelayers.io/badge/orangesys/alpine-kong:latest.svg)](https://imagelayers.io/?images=orangesys/alpine-kong:latest 'Get your own badge on imagelayers.io')
 # Kong in Docker
 
 This is the official Docker image for [Kong][kong-site-url].
