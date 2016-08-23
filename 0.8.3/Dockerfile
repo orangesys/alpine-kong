@@ -1,7 +1,7 @@
 FROM alpine:3.4
 MAINTAINER gavin zhou <gavin.zhou@gmail.com>
 
-ENV OPENRESTY_VERSION=1.9.7.5 \
+ENV OPENRESTY_VERSION=1.9.15.1 \
  LUAROCKS_VERSION=2.3.0 \
  KONG_VERSION=0.8.3 \
  OPENRESTY_PREFIX=/usr/local/openresty \
