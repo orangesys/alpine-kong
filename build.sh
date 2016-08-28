@@ -14,9 +14,9 @@ log_msg() {
 docker_build() {
   # CircleCI cannot build docker images with --rm=true correctly.
   if [ -z "$CIRCLE_BUILD_NUM" ]; then
-    docker build --rm=false "$@"
+    docker build --no-cache=true --rm=false "$@"
   else
-    docker build --rm=true "$@"
+    docker build --no-cache=true --rm=true "$@"
   fi
 }
 
