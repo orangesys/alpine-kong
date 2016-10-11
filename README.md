@@ -1,5 +1,8 @@
-[![CircleCI](https://circleci.com/gh/gavinzhou/alpine-kong.svg?style=svg)](https://circleci.com/gh/gavinzhou/alpine-kong)
+[![CircleCI](https://circleci.com/gh/orangesys/alpine-kong.svg?style=svg)](https://circleci.com/gh/orangesys/alpine-kong)
 [![](https://imagelayers.io/badge/orangesys/alpine-kong:latest.svg)](https://imagelayers.io/?images=orangesys/alpine-kong:latest 'Get your own badge on imagelayers.io')
+[![](https://images.microbadger.com/badges/image/orangesys/alpine-kong.svg)](https://microbadger.com/images/orangesys/alpine-kong "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/orangesys/alpine-kong.svg)](https://microbadger.com/images/orangesys/alpine-kong "Get your own version badge on microbadger.com")
+
 # Kong in Docker
 
 This is the official Docker image for [Kong][kong-site-url].
@@ -30,9 +33,11 @@ don't override ENTRYPOINT or run `dumb-init` yourself.
 
 # Supported tags and respective `Dockerfile` links
 
-- `0.7.0` - *([Dockerfile](https://github.com/gavinzhou/alpine-kong/blob/master/0.7.0/Dockerfile))*
-- `0.8.3` - *([Dockerfile](https://github.com/gavinzhou/alpine-kong/blob/master/0.8.3/Dockerfile))*
-- `latest` - *([Dockerfile](https://github.com/gavinzhou/alpine-kong/blob/master/0.8.3/Dockerfile))*
+- `0.7.0` - *([Dockerfile](https://github.com/orangesys/alpine-kong/blob/master/0.7.0/Dockerfile))*
+- `0.9.0` - *([Dockerfile](https://github.com/orangesys/alpine-kong/blob/master/0.9.0/Dockerfile))*
+- `0.9.1` - *([Dockerfile](https://github.com/orangesys/alpine-kong/blob/master/0.9.1/Dockerfile))*
+- `0.9.2` - *([Dockerfile](https://github.com/orangesys/alpine-kong/blob/master/0.9.2/Dockerfile))*
+- `0.9.3` - *([Dockerfile](https://github.com/orangesys/alpine-kong/blob/master/0.9.3/Dockerfile))*
 
 # What is Kong?
 
