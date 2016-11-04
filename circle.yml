@@ -18,12 +18,13 @@ dependencies:
 
   pre:
     - docker info
+    - docker-compose version
 
 test:
   override:
     - ./build.sh
-    - docker-compose up:
-        background: true
+    - docker images
+    - docker-compose up -d 
     - sleep 10
     - ./check.sh
 
