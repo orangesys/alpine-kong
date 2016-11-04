@@ -13,6 +13,8 @@ machine:
     - docker
 
 dependencies:
+  pre:
+    - sudo service postgresql stop
   cache_directories:
     - "~/docker"
 
