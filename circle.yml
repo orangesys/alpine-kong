@@ -6,10 +6,8 @@ machine:
     DEBIAN_FRONTEND: noninteractive
   pre:
     - sudo apt-get install jq
-    - sudo curl -L -o /usr/bin/docker 'https://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.0-circleci'
-    - sudo curl -L -l /usr/bin/docker-compose 'https://github.com/docker/compose/releases/download/1.8.1/docker-compose-$(uname -s)-$(uname -m)'
-    - sudo chmod 0755 /usr/bin/docker
-    - sudo chmod 0755 /usr/bin/docker-compose
+    - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+    - sudo pip install docker-compose
   timezone:
     Asia/Tokyo
   services:
