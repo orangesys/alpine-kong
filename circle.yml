@@ -24,7 +24,6 @@ dependencies:
 test:
   override:
     - ./build.sh
-    - docker images
     - docker-compose up -d 
     - sleep 10
     - ./check.sh
@@ -32,7 +31,11 @@ test:
     - docker-compose rm -f
 
 deployment:
-  production:
+  staging:
+    branch: master
+    commands:
+      echo "OK"
+  release:
     tag: /v[0-9]+(\.[0-9]+)*/
     commands:
       - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
