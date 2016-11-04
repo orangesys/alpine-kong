@@ -55,7 +55,7 @@ RUN echo "==> Installing dependencies..." \
  && echo "==> Installing kong dependencies..." \
  && wget -q https://releases.hashicorp.com/serf/${SERF_VERSION}/serf_${SERF_VERSION}_linux_amd64.zip \
  && unzip serf*.zip && mv serf /usr/bin/ && rm serf*.zip \
- && luarocks install https://raw.githubusercontent.com/Mashape/kong/master/kong-${KONG_VERSION}.rockspec \
+ && luarocks install https://raw.githubusercontent.com/Mashape/kong/0.9.3/kong-${KONG_VERSION}.rockspec \
  && ln -sf $OPENRESTY_PREFIX/bin/resty /usr/local/bin/resty \
  && ln -sf $OPENRESTY_PREFIX/nginx/sbin/nginx /usr/local/bin/nginx \
  && apk del .build-deps \
