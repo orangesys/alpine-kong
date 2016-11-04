@@ -1,0 +1,27 @@
+version: "2"
+
+services:
+  kong-database:
+    image: orangesys/alpine-postgres:9.5.4
+    container_name: kong-database
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=kong
+      - POSTGRES_DB=kong
+      - PGDATA=/var/lib/postgresql/kong
+  kong:
+    image: orangesys/alpine-kong:0.9.3
+    container_name: kong
+    environment:
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=kong-database
+    restart: always
+    ports:
+      - "8000:8000"
+      - "8443:8443"
+      - "8001:8001"
+      - "7946:7946"
+      - "7946:7946/udp"
+    links:
+      - kong-database

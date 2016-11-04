@@ -5,8 +5,11 @@ machine:
     CLUSTER_NAME: orangesysio
     DEBIAN_FRONTEND: noninteractive
   pre:
+    - sudo apt-get install jq
     - sudo curl -L -o /usr/bin/docker 'https://s3-external-1.amazonaws.com/circle-downloads/docker-1.9.0-circleci'
+    - sudo curl -L -l /usr/bin/docker-compose 'https://github.com/docker/compose/releases/download/1.8.1/docker-compose-$(uname -s)-$(uname -m)'
     - sudo chmod 0755 /usr/bin/docker
+    - sudo chmod 0755 /usr/bin/docker-compose
   timezone:
     Asia/Tokyo
   services:
@@ -22,16 +25,20 @@ dependencies:
 test:
   override:
     - ./build.sh
-    - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
-    - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update kubectl
-    - echo $GCLOUD_SERVICE_KEY | base64 --decode -i > ${HOME}/account-auth.json
-    - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/account-auth.json
-    - sudo /opt/google-cloud-sdk/bin/gcloud config set project $PROJECT_NAME
+    - docker-compose up:
+        background: true
+    - sleep 10
+    - ./check.sh
 
 deployment:
-  hub:
-    branch: master
+  release:
+    tag: /v[0-9]+(\.[0-9]+)*/
     commands:
+      - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
+      - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update kubectl
+      - echo $GCLOUD_SERVICE_KEY | base64 --decode -i > ${HOME}/account-auth.json
+      - sudo /opt/google-cloud-sdk/bin/gcloud auth activate-service-account --key-file ${HOME}/account-auth.json
+      - sudo /opt/google-cloud-sdk/bin/gcloud config set project $PROJECT_NAME
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push orangesys/alpine-kong
       - ./deploy.sh
