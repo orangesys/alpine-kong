@@ -27,11 +27,12 @@ dependencies:
 test:
   override:
     - sudo service postgresql stop
-    - docker-compose stop
-    - docker-compose rm -f
+    - sudo apt-get remove -y postgresql*
     - docker-compose up -d
     - sleep 5
     - ./check.sh
+    - docker-compose stop
+    - docker-compose rm -f
 
 general:
   branches:
@@ -50,3 +51,5 @@ deployment:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push orangesys/alpine-kong
       - ./deploy.sh
+      - docker logout
+      - curl -X POST 'https://hooks.microbadger.com/images/orangesys/alpine-kong/TXpYCFhbor1JfoHpi07GvS_rPjs='

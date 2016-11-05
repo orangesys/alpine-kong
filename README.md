@@ -6,38 +6,26 @@
 # Kong in Docker
 
 This is the official Docker image for [Kong][kong-site-url].
+
 orangesys/alpine-kong with [dumb-init](https://github.com/Yelp/dumb-init) installed and used as default ENTRYPOINT.
 
-## Rational
-You might have read that you should never run multiple processes in
-a Docker container. This is true as a rule of thumb, but there are
-exceptions.
+## Run kong in Kubernetes
+You can run Kubernetes use [helm charts](https://github.com/orangesys/charts/tree/master/kong) for this
 
-To decide what to run in a container and what to run in another
-container it's more important to look at logical boundaries than the
-number of processes.
-
-If you application X needs some "sidecar" process, you need to run it
-next to your application. Kubernetes supports [Pods](http://kubernetes.io/v1.1/docs/user-guide/pods.html)
-for this, which is usually the way to go and should be prefered over
-running multiple processes in a single container.
-
-But if you don't run Kubernetes, it's often better to just run multiple
-processes in a single container. This is where this image comes in
-handy. Here specifically we want to run multiple processes in one
-container since the target are embedded system with constraint
-resources.
 
 You can use this image like you would use any other base image, just
 don't override ENTRYPOINT or run `dumb-init` yourself.
 
+## Run docker compose
+```shell
+  git clone https://github.com/orangesys/alpine-kong.git
+  docker-compose up -d
+```
+
 # Supported tags and respective `Dockerfile` links
 
-- `0.7.0` - *([Dockerfile](https://github.com/orangesys/alpine-kong/blob/master/0.7.0/Dockerfile))*
-- `0.9.0` - *([Dockerfile](https://github.com/orangesys/alpine-kong/blob/master/0.9.0/Dockerfile))*
-- `0.9.1` - *([Dockerfile](https://github.com/orangesys/alpine-kong/blob/master/0.9.1/Dockerfile))*
-- `0.9.2` - *([Dockerfile](https://github.com/orangesys/alpine-kong/blob/master/0.9.2/Dockerfile))*
-- `0.9.3` - *([Dockerfile](https://github.com/orangesys/alpine-kong/blob/master/0.9.3/Dockerfile))*
+- `0.9.3` - *([Dockerfile](https://raw.githubusercontent.com/orangesys/alpine-kong/v0.9.3/0.9.3/Dockerfile))*
+- `0.9.4` - *([Dockerfile](https://raw.githubusercontent.com/orangesys/alpine-kong/v0.9.4/0.9.4/Dockerfile))*
 
 # What is Kong?
 
