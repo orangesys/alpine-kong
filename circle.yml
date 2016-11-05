@@ -33,15 +33,10 @@ test:
     - docker-compose stop
     - docker-compose rm -f
 
-general:
-  branches:
-    ignore:
-      - master
-      - /feature\/.*/
-
 deployment:
-  production:
+  release:
     tag: /^v[0-9]+(\.[0-9]+)*/
+    owner: ${CIRCLE_PROJECT_USERNAME}
     commands:
       - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update
       - sudo /opt/google-cloud-sdk/bin/gcloud --quiet components update kubectl
