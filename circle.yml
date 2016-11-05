@@ -17,7 +17,6 @@ dependencies:
     - "~/docker"
 
   pre:
-    - sudo service postgresql stop
     - git tag
     - docker info
     - docker-compose version
@@ -27,8 +26,8 @@ dependencies:
 
 test:
   override:
-    - docker-compose up:
-        background: true
+    - sudo service postgresql stop
+    - docker-compose up -d
     - sleep 5
     - ./check.sh
 
