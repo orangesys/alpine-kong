@@ -65,11 +65,6 @@ RUN echo "==> Installing dependencies..." \
  && apk add \
     libpcrecpp libpcre16 libpcre32 openssl libssl1.0 pcre libgcc libstdc++ e2fsprogs-dev dnsmasq perl bash \
  && echo "user=root" >> /etc/dnsmasq.conf \
- \
- # forward request and error logs to docker log collector
- && mkdir -p /var/log/nginx \
- && ln -sf /dev/stdout /var/log/nginx/access.log \
- && ln -sf /dev/stderr /var/log/nginx/error.log \
  && rm -rf /var/cache/apk/* \
  && rm -rf /root/ngx_openresty /root/luarocks /dumb-init-master
 
