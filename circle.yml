@@ -27,11 +27,10 @@ dependencies:
 
 test:
   override:
-    - docker-compose up -d 
+    - docker-compose up:
+        background: true
     - sleep 5
     - ./check.sh
-    - docker-compose stop
-    - docker-compose rm -f
 
 general:
   branches:
