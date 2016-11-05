@@ -32,6 +32,8 @@ test:
     - docker-compose up -d
     - sleep 5
     - ./check.sh
+    - docker-compose stop
+    - docker-compose rm -f
 
 general:
   branches:
