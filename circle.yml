@@ -27,8 +27,7 @@ dependencies:
 test:
   override:
     - sudo service postgresql stop
-    - docker-compose stop
-    - docker-compose rm -f
+    - sudo apt-get remove -y postgresql*
     - docker-compose up -d
     - sleep 5
     - ./check.sh
