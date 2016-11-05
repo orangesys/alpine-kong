@@ -16,6 +16,7 @@ services:
     environment:
       - KONG_DATABASE=postgres
       - KONG_PG_HOST=kong-database
+    command: kong start --nginx-conf /custom-nginx/nginx.template
     restart: always
     ports:
       - "8000:8000"
@@ -23,5 +24,7 @@ services:
       - "8001:8001"
       - "7946:7946"
       - "7946:7946/udp"
+    volumes:
+      - "./custom-nginx:/custom-nginx"
     links:
       - kong-database
