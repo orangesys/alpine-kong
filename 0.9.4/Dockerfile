@@ -1,9 +1,9 @@
 FROM alpine:3.4
 MAINTAINER gavin zhou <gavin.zhou@gmail.com>
 
-ENV OPENRESTY_VERSION=1.9.15.1 \
+ENV OPENRESTY_VERSION=1.11.2.1 \
  LUAROCKS_VERSION=2.3.0 \
- KONG_VERSION=0.9.3-0 \
+ KONG_VERSION=0.9.4 \
  SERF_VERSION=0.8.0 \
  OPENRESTY_PREFIX=/usr/local/openresty
 
@@ -55,18 +55,17 @@ RUN echo "==> Installing dependencies..." \
  && echo "==> Installing kong dependencies..." \
  && wget -q https://releases.hashicorp.com/serf/${SERF_VERSION}/serf_${SERF_VERSION}_linux_amd64.zip \
  && unzip serf*.zip && mv serf /usr/bin/ && rm serf*.zip \
- && luarocks install https://raw.githubusercontent.com/Mashape/kong/0.9.3/kong-${KONG_VERSION}.rockspec \
+ && luarocks install https://raw.githubusercontent.com/Mashape/kong/${KONG_VERSION}/kong-${KONG_VERSION}-0.rockspec \
  && ln -sf $OPENRESTY_PREFIX/bin/resty /usr/local/bin/resty \
  && ln -sf $OPENRESTY_PREFIX/nginx/sbin/nginx /usr/local/bin/nginx \
+ && curl -sSL -o /usr/local/bin/kong https://raw.githubusercontent.com/Mashape/kong/${KONG_VERSION}/bin/kong \
+ && curl -sSL -o /etc/kong/kong.conf.default https://raw.githubusercontent.com/Mashape/kong/0.9.4/kong.conf.default \
  && apk del .build-deps \
  && apk add \
     libpcrecpp libpcre16 libpcre32 openssl libssl1.0 pcre libgcc libstdc++ e2fsprogs-dev dnsmasq perl bash \
  && echo "user=root" >> /etc/dnsmasq.conf \
  && rm -rf /var/cache/apk/* \
  && rm -rf /root/ngx_openresty /root/luarocks /dumb-init-master
-
-COPY config.docker/kong.conf.default /etc/kong/kong.conf.default
-COPY config.docker/kong /usr/local/bin/kong
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
