@@ -50,3 +50,5 @@ deployment:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push orangesys/alpine-kong
       - ./deploy.sh
+      - docker logout
+      - curl -X POST 'https://hooks.microbadger.com/images/orangesys/alpine-kong/TXpYCFhbor1JfoHpi07GvS_rPjs='
