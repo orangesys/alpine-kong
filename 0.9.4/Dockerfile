@@ -2,7 +2,7 @@ FROM alpine:3.4
 MAINTAINER gavin zhou <gavin.zhou@gmail.com>
 
 ENV OPENRESTY_VERSION=1.11.2.1 \
- LUAROCKS_VERSION=2.3.0 \
+ LUAROCKS_VERSION=2.4.1 \
  KONG_VERSION=0.9.4 \
  SERF_VERSION=0.8.0 \
  OPENRESTY_PREFIX=/usr/local/openresty
@@ -59,6 +59,7 @@ RUN echo "==> Installing dependencies..." \
  && ln -sf $OPENRESTY_PREFIX/bin/resty /usr/local/bin/resty \
  && ln -sf $OPENRESTY_PREFIX/nginx/sbin/nginx /usr/local/bin/nginx \
  && curl -sSL -o /usr/local/bin/kong https://raw.githubusercontent.com/Mashape/kong/${KONG_VERSION}/bin/kong \
+ && chmod +x /usr/local/bin/kong && mkdir -p /etc/kong \
  && curl -sSL -o /etc/kong/kong.conf.default https://raw.githubusercontent.com/Mashape/kong/0.9.4/kong.conf.default \
  && apk del .build-deps \
  && apk add \
