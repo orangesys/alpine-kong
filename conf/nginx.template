@@ -16,7 +16,7 @@ http {
     charset UTF-8;
 
     error_log logs/error.log ${{LOG_LEVEL}};
-    access_log logs/access.log;
+    access_log /usr/local/openresty/nginx/logs/access.log;
 
 > if anonymous_reports then
     ${{SYSLOG_REPORTS}}
