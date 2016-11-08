@@ -38,6 +38,7 @@ for path in $dockerfiles; do
 done
 
 if [ ${#failed_builds[@]} -eq 0 ]; then
+  docker tag orangesys/alpine-kong:${tag} orangesys/alpine-kong:latest
   log_msg "All builds succeeded."
 else
   log_msg "Failed to build the following images:"

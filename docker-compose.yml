@@ -11,7 +11,7 @@ services:
       - POSTGRES_DB=kong
       - PGDATA=/var/lib/postgresql/kong
   kong:
-    image: orangesys/alpine-kong:0.9.4
+    image: orangesys/alpine-kong
     container_name: kong
     environment:
       - KONG_DATABASE=postgres
