@@ -1,9 +1,7 @@
 machine:
   environment:
     PROJECT_NAME: orangesys
-    CLOUDSDK_COMPUTE_ZONE: asia-east1-c
-    CLUSTER_NAME: orangesysio
-    DEBIAN_FRONTEND: noninteractive
+    CLOUDSDK_COMPUTE_ZONE: asia-northeast1-c
   pre:
     - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
     - sudo pip install docker-compose
