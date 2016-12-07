@@ -2,7 +2,7 @@ FROM openresty/openresty:1.11.2.1-alpine
 MAINTAINER gavin zhou <gavin.zhou@gmail.com>
 
 ENV LUAROCKS_VERSION=2.4.1 \
- KONG_VERSION=0.9.5 \
+ KONG_VERSION=0.9.6 \
  SERF_VERSION=0.8.0 \
  OPENRESTY_PREFIX=/usr/local/openresty
 
@@ -31,7 +31,7 @@ RUN echo "==> Installing dependencies..." \
  && ln -sf $OPENRESTY_PREFIX/nginx/sbin/nginx /usr/local/bin/nginx \
  && curl -sSL -o /usr/local/bin/kong https://raw.githubusercontent.com/Mashape/kong/${KONG_VERSION}/bin/kong \
  && chmod +x /usr/local/bin/kong && mkdir -p /etc/kong \
- && curl -sSL -o /etc/kong/kong.conf.default https://raw.githubusercontent.com/Mashape/kong/0.9.4/kong.conf.default \
+ && curl -sSL -o /etc/kong/kong.conf.default https://raw.githubusercontent.com/Mashape/kong/${KONG_VERSION}/kong.conf.default \
  && apk del .build-deps \
  && echo "user=root" >> /etc/dnsmasq.conf \
  && rm -rf /var/cache/apk/* /root/luarocks
