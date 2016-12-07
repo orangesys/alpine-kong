@@ -26,6 +26,8 @@ don't override ENTRYPOINT or run `dumb-init` yourself.
 
 - `0.9.3` - *([Dockerfile](https://raw.githubusercontent.com/orangesys/alpine-kong/v0.9.3/0.9.3/Dockerfile))*
 - `0.9.4` - *([Dockerfile](https://raw.githubusercontent.com/orangesys/alpine-kong/v0.9.4/0.9.4/Dockerfile))*
+- `0.9.5` - *([Dockerfile](https://raw.githubusercontent.com/orangesys/alpine-kong/v0.9.5/0.9.5/Dockerfile))*
+- `0.9.6` - *([Dockerfile](https://raw.githubusercontent.com/orangesys/alpine-kong/v0.9.6/0.9.6/Dockerfile))*
 
 # What is Kong?
 
