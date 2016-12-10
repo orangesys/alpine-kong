@@ -74,7 +74,6 @@ http {
         location ~ /(?<fwd_alias>.*)/ {
             set $upstream_host nil;
             set $upstream_url nil;
-            set $influxdb "-influxdb";
 
             access_by_lua_block {
                 kong.access()
@@ -85,8 +84,7 @@ http {
             proxy_set_header X-Forwarded-Proto $scheme;
             proxy_set_header Host $upstream_host;
             proxy_pass_header Server;
-            #proxy_pass $upstream_url;
-            proxy_pass http://$fwd_alias$influxdb;
+            proxy_pass $upstream_url;
 
             header_filter_by_lua_block {
                 kong.header_filter()
