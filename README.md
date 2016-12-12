@@ -1,5 +1,5 @@
 [![CircleCI](https://circleci.com/gh/orangesys/alpine-kong.svg?style=svg)](https://circleci.com/gh/orangesys/alpine-kong)
-[![](https://imagelayers.io/badge/orangesys/alpine-kong:latest.svg)](https://imagelayers.io/?images=orangesys/alpine-kong:latest 'Get your own badge on imagelayers.io')
+[![Docker Pulls](https://img.shields.io/docker/pulls/orangesys/alpine-kong.svg)]()
 [![](https://images.microbadger.com/badges/image/orangesys/alpine-kong.svg)](https://microbadger.com/images/orangesys/alpine-kong "Get your own image badge on microbadger.com")
 [![](https://images.microbadger.com/badges/version/orangesys/alpine-kong.svg)](https://microbadger.com/images/orangesys/alpine-kong "Get your own version badge on microbadger.com")
 
