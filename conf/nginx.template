@@ -95,9 +95,6 @@ http {
 > end
 
         location / {
-            proxy_cache_valid 200 5m;
-            proxy_cache_min_uses 1;
-
             set $upstream_host nil;
             set $upstream_url nil;
 
@@ -111,6 +108,11 @@ http {
             proxy_set_header Host $upstream_host;
             proxy_pass_header Server;
             proxy_pass $upstream_url;
+            proxy_cache_valid 200 302 5m;
+            proxy_cache_min_uses 1;
+            proxy_cache_valid 404 1m;
+            add_header X-Cache-Status $upstream_cache_status;
+            proxy_cache_use_stale error timeout invalid_header http_500 http_502 http_503 http_504;
 
             header_filter_by_lua_block {
                 kong.header_filter()
