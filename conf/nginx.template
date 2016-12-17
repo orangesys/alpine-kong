@@ -74,7 +74,6 @@ http {
 
     server {
         server_name kong;
-        proxy_cache mem_cache_zone;
 
         listen ${{PROXY_LISTEN}};
         error_page 404 408 411 412 413 414 417 /kong_error_handler;
@@ -89,6 +88,15 @@ http {
             kong.ssl_certificate()
         }
 > end
+
+        location ~ .*\.(gif|jpg|png|htm|html|css|js|flv|ico|swf)(.*) {
+             proxy_cache mem_cache_zone;
+             proxy_cache_key "$scheme://$host$request_uri$is_args$args";
+             proxy_cache_valid 200 302 1h;
+             proxy_cache_valid 301 1d;
+             proxy_cache_valid any 1m;
+             add_header X-Cache-Status $upstream_cache_status;
+        }
 
         location / {
             set $upstream_host nil;
@@ -110,6 +118,7 @@ http {
             proxy_buffers 4 256k;
             proxy_busy_buffers_size 256k;
 
+            proxy_cache mem_cache_zone;
             proxy_cache_valid 200 302 5m;
             proxy_cache_key "$scheme://$host$request_uri$is_args$args";
             proxy_cache_min_uses 1;
