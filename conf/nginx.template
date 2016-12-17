@@ -89,15 +89,6 @@ http {
         }
 > end
 
-        location ~ .*\.(gif|jpg|png|htm|html|css|js|flv|ico|swf)(.*) {
-             proxy_cache mem_cache_zone;
-             proxy_cache_key "$scheme://$host$request_uri$is_args$args";
-             proxy_cache_valid 200 302 1h;
-             proxy_cache_valid 301 1d;
-             proxy_cache_valid any 1m;
-             add_header X-Cache-Status $upstream_cache_status;
-        }
-
         location / {
             set $upstream_host nil;
             set $upstream_url nil;
