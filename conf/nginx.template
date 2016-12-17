@@ -16,12 +16,12 @@ http {
     charset UTF-8;
 
     gzip on;
-  	gzip_http_version 1.1;
-  	gzip_vary on;
-  	gzip_comp_level 6;
-  	gzip_proxied any;
-  	gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript text/x-js;
-  	gzip_buffers 16 8k;
+    gzip_http_version 1.1;
+    gzip_vary on;
+    gzip_comp_level 6;
+    gzip_proxied any;
+    gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript text/x-js;
+    gzip_buffers 16 8k;
 
     proxy_cache_path /tmp/cache keys_zone=mem_cache_zone:25m loader_threshold=300 loader_files=200 max_size=100m;
 
