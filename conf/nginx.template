@@ -166,7 +166,7 @@ http {
         }
 
         location /healthcheck {
-            return 200 'Kong APIs is healthy!';
+            return 200 'Orangesys apiGateway is healthy';
             access_log off;
         }
 
