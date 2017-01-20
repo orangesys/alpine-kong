@@ -2,6 +2,10 @@
 
 set -e
 
+if [ ! -e ~/docker ]; then
+  mkdir ~/docker
+fi
+
 dir=.
 if [ $# -gt 0 ]; then
   dir=("$@")
