@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set +ex
+
 curl -si -X POST \
   --url http://localhost:8001/apis/ \
   --data 'name=mockbin' \

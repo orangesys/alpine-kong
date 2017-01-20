@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 dir=.
 if [ $# -gt 0 ]; then
