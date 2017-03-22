@@ -30,6 +30,7 @@ don't override ENTRYPOINT or run `dumb-init` yourself.
 - `0.9.6` - *([Dockerfile](https://raw.githubusercontent.com/orangesys/alpine-kong/v0.9.6/0.9.6/Dockerfile))*
 - `0.9.7` - *([Dockerfile](https://raw.githubusercontent.com/orangesys/alpine-kong/v0.9.7/0.9.7/Dockerfile))*
 - `0.9.8` - *([Dockerfile](https://raw.githubusercontent.com/orangesys/alpine-kong/v0.9.8/0.9.8/Dockerfile))*
+- `0.9.9` - *([Dockerfile](https://raw.githubusercontent.com/orangesys/alpine-kong/v0.9.9/0.9.9/Dockerfile))*
 
 # What is Kong?
 
@@ -143,4 +144,3 @@ Before you start to code, we recommend discussing your plans through a [GitHub i
 
 [github-new-issue]: https://github.com/Mashape/docker-kong/issues/new
 [docker-data-volume]: https://docs.docker.com/userguide/dockervolumes/
-

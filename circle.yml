@@ -47,6 +47,7 @@ deployment:
       - sudo /opt/google-cloud-sdk/bin/gcloud config set project $PROJECT_NAME
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
       - docker push orangesys/alpine-kong
-      - ./deploy.sh
       - docker logout
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS quay.io
+      - ./deploy.sh
       - curl -X POST 'https://hooks.microbadger.com/images/orangesys/alpine-kong/TXpYCFhbor1JfoHpi07GvS_rPjs='
