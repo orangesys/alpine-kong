@@ -22,7 +22,7 @@ for path in $dockerfiles; do
   log_msg "Tagging docker image $tag with gcr tag"
   docker tag "orangesys/alpine-kong:${tag}" "asia.gcr.io/saas-orangesys-io/alpine-kong:${tag}"
   docker tag "orangesys/alpine-kong:${tag}" "quay.io/orangesys/alpine-kong:${tag}"
-  docker push uay.io/orangesys/alpine-kong:${tag}
+  docker push quay.io/orangesys/alpine-kong:${tag}
   sudo /opt/google-cloud-sdk/bin/gcloud docker -- push asia.gcr.io/saas-orangesys-io/alpine-kong:${tag}
   docker logout
 done
