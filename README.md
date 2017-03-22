@@ -2,6 +2,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/orangesys/alpine-kong.svg)](https://hub.docker.com/r/orangesys/alpine-kong/)
 [![](https://images.microbadger.com/badges/image/orangesys/alpine-kong.svg)](https://microbadger.com/images/orangesys/alpine-kong "Get your own image badge on microbadger.com")
 [![](https://images.microbadger.com/badges/version/orangesys/alpine-kong.svg)](https://microbadger.com/images/orangesys/alpine-kong "Get your own version badge on microbadger.com")
+[![Docker Repository on Quay](https://quay.io/repository/orangesys/alpine-kong/status?token=15718857-a9c3-4902-a079-dbd1b2506063 "Docker Repository on Quay")](https://quay.io/repository/orangesys/alpine-kong)
 
 # Kong in Docker
 
