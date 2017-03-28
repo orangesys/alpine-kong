@@ -2,15 +2,16 @@ FROM openresty/openresty:1.11.2.1-alpine
 MAINTAINER gavin zhou <gavin.zhou@gmail.com>
 
 ENV LUAROCKS_VERSION=2.4.1 \
- KONG_VERSION=0.10.0 \
- SERF_VERSION=0.8.0 \
+ KONG_VERSION=0.10.1 \
+ SERF_VERSION=0.8.1 \
  OPENRESTY_PREFIX=/usr/local/openresty
 
 RUN echo "==> Installing dependencies..." \
  && apk update \
  && apk add --virtual .build-deps \
     make gcc musl-dev curl wget git unzip openssl-dev \
- && apk add openssl dnsmasq perl gd busybox \
+ && apk add openssl dnsmasq perl \
+ && apk add --upgrade gd busybox \
  && apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/community dumb-init \
  && echo "==> Configuring LuaRocks..." \
  && mkdir -p /root/luarocks \
