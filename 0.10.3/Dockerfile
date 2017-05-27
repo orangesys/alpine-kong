@@ -11,7 +11,7 @@ RUN echo "==> Installing dependencies..." \
  && apk add --virtual .build-deps \
     make gcc musl-dev curl wget git unzip openssl-dev \
  && apk add openssl dnsmasq perl \
- && apk add --upgrade gd busybox \
+ && apk add --upgrade gd busybox libxslt libxml2 \
  && apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/community dumb-init \
  && echo "==> Configuring LuaRocks..." \
  && mkdir -p /root/luarocks \
